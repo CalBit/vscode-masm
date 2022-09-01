@@ -1,0 +1,94 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "MASM",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#entities"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#variables"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.masm",
+					"match": "^\\s*(end|jump)\\s|(?<=^\\s*jump\\s+)\\S+|^\\s*\\S+:"
+				},
+				{
+					"name": "keyword.operator.masm",
+					"match": "(?<=^\\s*(draw|control|op|ucontrol|radar|uradar|ulocate)\\s+)\\S+|(?<=^\\s*(radar|jump|uradar|ulocate)\\s+\\S+\\s+)\\S+|(?<=^\\s*(radar|uradar)\\s+\\S+\\s+\\S+\\s+)\\S+|(?<=^\\s*(radar|uradar)\\s+\\S+\\s+\\S+\\s+\\S+\\s+)\\S+"
+				}
+			]
+		},
+		"entities": {
+			"patterns": [
+				{
+					"name": "entity.name.function.masm",
+					"match": "^\\s*(read|write|draw|print|drawflush|printflush|getlink|control|radar|sensor|set|op|ubind|ucontrol|uradar|ulocate)\\s"
+				}
+			]
+		},
+		"variables": {
+			"patterns": [
+				{
+					"name": "variable.language.masm",
+					"match": "@\\w+"
+				},
+				{
+					"name": "variable.parameter.masm",
+					"match": "(?<=^\\s*(read|write|getlink|sensor|set)\\s+)\\S+|(?<=^\\s*op\\s+\\S+\\s+)\\S+|(?<=^\\s*(radar|uradar|ulocate)\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+)\\S+|(?<=^\\s*ulocate\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+)\\S+|(?<=^\\s*ulocate\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+)\\S+|(?<=^\\s*ulocate\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+\\S+\\s+)\\S+"
+				},
+				{
+					"name": "variable.other.masm",
+					"match": "\\S+"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.number-sign.masm",
+					"match": "#.*"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.masm",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.masm",
+					"match": "\\\\."
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.masm",
+					"match": "(?<=\\s+)-?\\d+(\\.\\d+)?"
+				},
+				{
+					"name": "constant.language.masm",
+					"match": "true|false|null"
+				}
+			]
+		}
+	},
+	"scopeName": "source.masm"
+}
