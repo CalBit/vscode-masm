@@ -12,3 +12,6 @@ None.
 
 Initial release of MASM
 
+### 1.0.1
+
+Added snippets for all Mindustry instructions
