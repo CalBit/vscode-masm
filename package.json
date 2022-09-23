@@ -7,7 +7,8 @@
     "vscode": "^1.70.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets"
   ],
   "contributes": {
     "languages": [{
@@ -20,6 +21,12 @@
       "language": "masm",
       "scopeName": "source.masm",
       "path": "./syntaxes/masm.tmLanguage.json"
-    }]
+    }],
+    "snippets": [
+      {
+        "language": "masm",
+        "path": "./snippets/masm-snippets.json"
+      }
+    ]
   }
 }

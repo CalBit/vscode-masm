@@ -1,0 +1,92 @@
+{
+  "Read Instruction": {
+    "prefix": ["read"],
+    "body": ["read ${1:result} ${2:cell1} ${0:0}"],
+    "description": "Read a number from a linked memory cell."
+  },
+  "Write Instruction": {
+    "prefix": ["write"],
+    "body": ["write ${1:result} ${2:cell1} ${0:0}"],
+    "description": "Write a number to a linked memory cell."
+  },
+  "Draw Instruction": {
+    "prefix": ["draw"],
+    "body": ["draw ${1|clear,color,stroke,line,rect,lineRect,poly,linePoly,triangle,image|} ${2:0} ${3:0} ${4:0} ${5:0} ${6:0} ${0:0}"],
+    "description": "Add an operation to the drawing buffer. Does not display anything until Draw Flush is used."
+  },
+  "Print Instruction": {
+    "prefix": ["print"],
+    "body": ["print ${0:\"frog\"}"],
+    "description": "Add text to the print buffer. Does not display anything until Print Flush is used."
+  },
+  "Draw Flush Instruction": {
+    "prefix": ["drawflush"],
+    "body": ["drawflush ${0:display1}"],
+    "description": "Flush queued Draw operations to a display."
+  },
+  "Print Flush Instruction": {
+    "prefix": ["printflush"],
+    "body": ["printflush ${0:message1}"],
+    "description": "Flush queued Print operations to a message block."
+  },
+  "Get Link Instruction": {
+    "prefix": ["getlink"],
+    "body": ["getlink ${1:result} ${0:0}"],
+    "description": "Get a processor link by index. Starts at 0."
+  },
+  "Control Instruction": {
+    "prefix": ["control"],
+    "body": ["control ${1|enabled,shoot,shootp,configure,color|} ${2:block1} ${3:0} ${4:0} ${5:0} ${0:0}"],
+    "description": "Control a building."
+  },
+  "Radar Instruction": {
+    "prefix": ["radar"],
+    "body": ["radar ${1|enemy,any,ally,player,attacker,flying,boss,ground|} ${2|any,enemy,ally,player,attacker,flying,boss,ground|} ${3|any,enemy,ally,player,attacker,flying,boss,ground|} ${4|distance,health,shield,armor,maxHealth|} ${5:turret1} ${6:1} ${0:result}"],
+    "description": "Locate units around a building with range."
+  },
+  "Sensor Instruction": {
+    "prefix": ["sensor"],
+    "body": ["sensor ${1:result} ${2:block1} ${3|@copper,@lead,@metaglass,@graphite,@sand,@coal,@titanium,@thorium,@scrap,@silicon,@plastanium,@phase-fabric,@surge-alloy,@spore-pod,@blast-compound,@pyratite,@water,@slag,@oil,@cryofluid,@totalItems,@firstItem,@totalLiquids,@totalPower,@itemCapacity,@liquidCapacity,@powerCapacity,@powerNetStored,@powerNetCapacity,@powerNetIn,@powerNetOut,@ammo,@ammoCapacity,@health,@maxHealth,@heat,@efficiency,@timescale,@rotation,@x,@y,@shootX,@shootY,@size,@dead,@range,@shooting,@boosting,@mineX,@mineY,@mining,@team,@type,@flag,@controlled,@controller,@commanded,@name,@config,@payloadCount,@payloadType,@enabled,@configure|}${0}"],
+    "description": "Get data from a building or unit."
+  },
+  "Set Instruction": {
+    "prefix": ["set"],
+    "body": ["set ${1:result} ${0:0}"],
+    "description": "Set a variable."
+  },
+  "Operation Instruction": {
+    "prefix": ["op"],
+    "body": ["op ${1|add,sub,mul,div,idiv,mod,pow,equal,notEqual,land,lessThan,lessThanEq,greaterThan,greaterThanEq,strictEqual,shl,shr,or,and,xor,not,max,min,angle,len,noise,abs,log,log10,sin,cos,tan,floor,ceil,sqrt,rand|} ${2:result} ${3:a} ${0:b}"],
+    "description": "Perform an operation on 1-2 variables."
+  },
+  "End Instruction": {
+    "prefix": ["end"],
+    "body": ["end"],
+    "description": "Jump to the top of the instruction stack."
+  },
+  "Jump Instruction": {
+    "prefix": ["jump"],
+    "body": ["jump ${1:-1} ${2|notEqual,equal,lessThan,lessThanEq,greaterThan,greaterThanEq,strictEqual,always|} ${3:x} ${0:false}"],
+    "description": "Conditionally jump to another statement."
+  },
+  "Unit Bind Instruction": {
+    "prefix": ["ubind"],
+    "body": ["ubind ${1|@poly,@dagger,@mace,@fortress,@scepter,@reign,@nova,@pulsar,@quasar,@vela,@corvus,@crawler,@atrax,@spiroct,@arkyid,@toxopod,@flare,@horizon,@zenith,@antumbra,@eclipse,@mono,@mega,@quad,@oct,@risso,@minke,@bryde,@sei,@omura,@alpha,@beta,@gamma|}${0}"],
+    "description": "Bind to the next unit of a type, and store it in @unit."
+  },
+  "Unit Control Instruction": {
+    "prefix": ["ucontrol"],
+    "body": ["ucontrol ${1|move,idle,stop,approach,boost,pathfind,target,targetp,itemDrop,itemTake,payDrop,payTake,mine,flag,build,getBlock,within|} ${2:0} ${3:0} ${4:0} ${5:0} ${0:0}"],
+    "description": "Control the currently bound unit."
+  },
+  "Unit Radar Instruction": {
+    "prefix": ["uradar"],
+    "body": ["uradar ${1|enemy,any,ally,player,attacker,flying,boss,ground|} ${2|any,enemy,ally,player,attacker,flying,boss,ground|} ${3|any,enemy,ally,player,attacker,flying,boss,ground|} ${4|distance,health,shield,armor,maxHealth|} 0 ${5:1} ${0:result}"],
+    "description": "Locate units around the currently bound unit."
+  },
+  "Unit Locate Instruction": {
+    "prefix": ["ulocate"],
+    "body": ["ulocate ${1|building,ore,spawn,damaged|} ${2|core,storage,generator,turret,factory,repair,rally,battery,resupply,reactor|} ${3|true,false|} @copper ${4:outx} ${5:outy} ${6:found} ${0:building}"],
+    "description": "Locate a specific type of position/building anywhere on the map. Requires a bound unit."
+  }
+}
